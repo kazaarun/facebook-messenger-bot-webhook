@@ -43,7 +43,7 @@ var natural_language_classifier = new NaturalLanguageClassifierV1({
 
 // Using a classifier
 natural_language_classifier.classify({
-  text: text,
+  text: event.message.text,
   classifier_id: '2a3230x98-nlc-317' }, // from the previous command
   function(err, response) {
     if (err)
@@ -61,7 +61,7 @@ natural_language_classifier.classify({
 
 function sendTextMessage(sender, text) {
     messageData = {
-        text:text
+        text:JSON.stringify(response, null, 2)
     }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
