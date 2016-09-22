@@ -36,15 +36,15 @@ var NaturalLanguageClassifierV1 = require('watson-developer-cloud/natural-langua
 var fs     = require('fs');
 
 var natural_language_classifier = new NaturalLanguageClassifierV1({
-  username: 'e8a616b7-df67-4996-bdcf-88b6825225fc',
-  password: 'vr4yKZe2UKcF',
+  username: '',
+  password: '',
   version: 'v1'
 });
 
 // Using a classifier
 natural_language_classifier.classify({
   text: event.message.text,
-  classifier_id: '2a3230x98-nlc-317' }, // from the previous command
+  classifier_id: '' }, // from the previous command
   function(err, response) {
     if (err)
       console.log('error:', err);
