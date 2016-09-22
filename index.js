@@ -21,7 +21,15 @@ app.get('/webhook', function (req, res) {
     }
 });
 
-
+app.post('/webhook/', function (req, res) {
+    console.log (req.body);
+    messaging_events = req.body.entry[0].messaging;
+    for (i = 0; i < messaging_events.length; i++) {
+        event = req.body.entry[0].messaging[i];
+        sender = event.sender.id;
+        if (event.message && event.message.text) {
+            text = event.message.text;
+            // Your Logic Replaces the following Line
 'use strict';
 
 var NaturalLanguageClassifierV1 = require('watson-developer-cloud/natural-language-classifier/v1');
@@ -33,33 +41,17 @@ var natural_language_classifier = new NaturalLanguageClassifierV1({
   version: 'v1'
 });
 
-
-app.post('/webhook/', function (req, res) {
-    console.log (req.body);
-    messaging_events = req.body.entry[0].messaging;
-    for (i = 0; i < messaging_events.length; i++) {
-        event = req.body.entry[0].messaging[i];
-        sender = event.sender.id;
-        if (event.message && event.message.text) {
-            text = event.message.text;
-            // Your Logic Replaces the following Line
             // Using a classifier
 natural_language_classifier.classify({
-  text: text,
-  classifier_id: '2a3230x98-nlc-317' }, // from the previous command
+  text: 'How hot will it be today?',
+  classifier_id: '2a3230x98-nlc-317' },
   function(err, response) {
     if (err)
       console.log('error:', err);
     else
       console.log(JSON.stringify(response, null, 2));
-
-            sendTextMessage(sender, response);
-        }
-       
-    }
     res.sendStatus(200);
 });
-
 
 function sendTextMessage(sender, text) {
     messageData = {
