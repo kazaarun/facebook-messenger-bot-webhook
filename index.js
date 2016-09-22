@@ -32,69 +32,7 @@ app.post('/webhook/', function (req, res) {
             // Your Logic Replaces the following Line
             sendTextMessage(sender, "By using this service you agree to allow DxAI to collect your information and location. Location will be used to collect local data that may affect your condition. \n Hi! My name is DxAI_bot.  I'm here to help diagnose you. You can type or touch /end if you do not agree with the service terms above."+ text.substring(0, 200));
         }
-
-        if (text) {
-
-    // If we receive a text message, check to see if it matches any special
-    // keywords and send back the corresponding example. Otherwise, just echo
-    // the text we received.
-    var lowercase = text.toLowerCase().trim();
-    switch (lowercase) {
-      case 'image':
-        sendImageMessage(senderID);
-        break;
-
-      case 'gif':
-        sendGifMessage(senderID);
-        break;
-
-      case 'audio':
-        sendAudioMessage(senderID);
-        break;
-
-      case 'video':
-        sendVideoMessage(senderID);
-        break;
-
-      case 'file':
-        sendFileMessage(senderID);
-        break;
-
-      case 'button':
-        sendButtonMessage(senderID);
-        break;
-
-      case 'generic':
-        sendGenericMessage(senderID);
-        break;
-
-      case 'receipt':
-        sendReceiptMessage(senderID);
-        break;
-
-      case 'quick reply':
-        sendQuickReply(senderID);
-        break;
-
-      case 'read receipt':
-        sendReadReceipt(senderID);
-        break;
-
-      case 'typing on':
-        sendTypingOn(senderID);
-        break;
-
-      case 'typing off':
-        sendTypingOff(senderID);
-        break;
-
-      case 'account linking':
-        sendAccountLinking(senderID);
-        break;
-
-      case 'hi dere':
-        greetBunny(senderID);
-        break;  
+       
     }
     res.sendStatus(200);
 });
