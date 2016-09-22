@@ -30,12 +30,24 @@ app.post('/webhook/', function (req, res) {
         if (event.message && event.message.text) {
             text = event.message.text;
             // Your Logic Replaces the following Line
-            sendTextMessage(sender, "By using this service you agree to allow DxAI to collect your information and location. Location will be used to collect local data that may affect your condition. \n Hi! My name is DxAI_bot.  I'm here to help diagnose you. You can type or touch /end if you do not agree with the service terms above."+ text.substring(0, 200));
+            // Using a classifier
+natural_language_classifier.classify({
+  text: text,
+  classifier_id: '<classifier-id>' }, // from the previous command
+  function(err, response) {
+    if (err)
+      console.log('error:', err);
+    else
+      var diagnosis = console.log(JSON.stringify(response, null, 2));
+      console.log(JSON.stringify(response, null, 2));
+
+//            sendTextMessage(sender, "By using this service you agree to allow DxAI to collect your information and location. Location will be used to collect local data that may affect your condition. \n Hi! My name is DxAI_bot.  I'm here to help diagnose you. You can type or touch /end if you do not agree with the service terms above."+ text.substring(0, 200));
         }
        
     }
     res.sendStatus(200);
 });
+
 
 function sendTextMessage(sender, text) {
     messageData = {
