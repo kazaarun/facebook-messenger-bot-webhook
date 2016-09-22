@@ -52,7 +52,7 @@ natural_language_classifier.classify({
       console.log(JSON.stringify(response, null, 2));
 });
             // Your Logic Replaces the following Line
-            sendTextMessage(sender, JSON.stringify(response, null, 2));
+            sendTextMessage(sender, "I think you may have: "+ JSON.stringify(response, null, 2));
         }
        
     }
@@ -61,7 +61,7 @@ natural_language_classifier.classify({
 
 function sendTextMessage(sender, text) {
     messageData = {
-        text:JSON.stringify(response, null, 2)
+        text:text
     }
     request({
         url: 'https://graph.facebook.com/v2.6/me/messages',
