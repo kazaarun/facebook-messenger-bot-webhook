@@ -43,7 +43,7 @@ var natural_language_classifier = new NaturalLanguageClassifierV1({
 
 // Using a classifier
 natural_language_classifier.classify({
-  text: 'Is it sunny?',
+  text: text,
   classifier_id: '2a3230x98-nlc-317' }, // from the previous command
   function(err, response) {
     if (err)
@@ -52,7 +52,7 @@ natural_language_classifier.classify({
       console.log(JSON.stringify(response, null, 2));
 });
             // Your Logic Replaces the following Line
-            sendTextMessage(sender, response);
+            sendTextMessage(sender, JSON.stringify(response, null, 2));
         }
        
     }
