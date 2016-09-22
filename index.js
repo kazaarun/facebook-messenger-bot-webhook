@@ -38,7 +38,6 @@ natural_language_classifier.classify({
     if (err)
       console.log('error:', err);
     else
-      var diagnosis = console.log(JSON.stringify(response, null, 2));
       console.log(JSON.stringify(response, null, 2));
 
 //            sendTextMessage(sender, "By using this service you agree to allow DxAI to collect your information and location. Location will be used to collect local data that may affect your condition. \n Hi! My name is DxAI_bot.  I'm here to help diagnose you. You can type or touch /end if you do not agree with the service terms above."+ text.substring(0, 200));
