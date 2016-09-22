@@ -33,12 +33,12 @@ app.post('/webhook/', function (req, res) {
             sendTextMessage(sender, "By using this service you agree to allow DxAI to collect your information and location. Location will be used to collect local data that may affect your condition. \n Hi! My name is DxAI_bot.  I'm here to help diagnose you. You can type or touch /end if you do not agree with the service terms above."+ text.substring(0, 200));
         }
 
-        if (messageText) {
+        if (text) {
 
     // If we receive a text message, check to see if it matches any special
     // keywords and send back the corresponding example. Otherwise, just echo
     // the text we received.
-    var lowercase = messageText.toLowerCase().trim();
+    var lowercase = text.toLowerCase().trim();
     switch (lowercase) {
       case 'image':
         sendImageMessage(senderID);
