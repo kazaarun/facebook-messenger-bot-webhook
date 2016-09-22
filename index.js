@@ -21,6 +21,19 @@ app.get('/webhook', function (req, res) {
     }
 });
 
+
+'use strict';
+
+var NaturalLanguageClassifierV1 = require('watson-developer-cloud/natural-language-classifier/v1');
+var fs     = require('fs');
+
+var natural_language_classifier = new NaturalLanguageClassifierV1({
+  username: 'e8a616b7-df67-4996-bdcf-88b6825225fc',
+  password: 'vr4yKZe2UKcF',
+  version: 'v1'
+});
+
+
 app.post('/webhook/', function (req, res) {
     console.log (req.body);
     messaging_events = req.body.entry[0].messaging;
@@ -33,14 +46,14 @@ app.post('/webhook/', function (req, res) {
             // Using a classifier
 natural_language_classifier.classify({
   text: text,
-  classifier_id: '<classifier-id>' }, // from the previous command
+  classifier_id: '2a3230x98-nlc-317' }, // from the previous command
   function(err, response) {
     if (err)
       console.log('error:', err);
     else
       console.log(JSON.stringify(response, null, 2));
 
-//            sendTextMessage(sender, "By using this service you agree to allow DxAI to collect your information and location. Location will be used to collect local data that may affect your condition. \n Hi! My name is DxAI_bot.  I'm here to help diagnose you. You can type or touch /end if you do not agree with the service terms above."+ text.substring(0, 200));
+            sendTextMessage(sender, response);
         }
        
     }
