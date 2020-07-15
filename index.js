@@ -29,32 +29,9 @@ app.post('/webhook/', function (req, res) {
         sender = event.sender.id;
         if (event.message && event.message.text) {
             text = event.message.text;
-//Watson classifier
-'use strict';
-
-var NaturalLanguageClassifierV1 = require('watson-developer-cloud/natural-language-classifier/v1');
-var fs     = require('fs');
-
-var natural_language_classifier = new NaturalLanguageClassifierV1({
-  username: '',
-  password: '',
-  version: 'v1'
-});
-
-// Using a classifier
-natural_language_classifier.classify({
-  text: event.message.text,
-  classifier_id: '' }, // from the previous command
-  function(err, response) {
-    if (err)
-      console.log('error:', err);
-    else
-      console.log(JSON.stringify(response, null, 2));
-});
             // Your Logic Replaces the following Line
-            sendTextMessage(sender, "I think you may have: "+ JSON.stringify(response, null, 2));
+            sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
         }
-       
     }
     res.sendStatus(200);
 });
